@@ -3,7 +3,8 @@
 # dehydrated by lukas2511
 # Source: https://dehydrated.io
 #
-# This script is licensed under The MIT License (see LICENSE for more information).
+# This script is licensed under the MIT License (see LICENSE for more
+# information).
 
 set -e
 set -u
@@ -221,7 +222,8 @@ load_config() {
   # Check for missing dependencies
   check_dependencies
 
-  # Remove slash from end of BASEDIR. Mostly for cleaner outputs, doesn't change functionality.
+  # Remove slash from end of BASEDIR.  This is mostly for cleaner outputs; it
+  # doesn't change functionality.
   [[ "$BASEDIR" != "/" ]] && BASEDIR="${BASEDIR%%/}"
 
   # Check BASEDIR and set default variables
@@ -323,10 +325,10 @@ init_system() {
     CA_ACCOUNT=${CA_NEW_ACCOUNT/new-acct/acct}
   fi
 
-  # Export some environment variables to be used in hook script
+  # Export some environment variables to be used in hook script.
   export WELLKNOWN BASEDIR CERTDIR CONFIG COMMAND
 
-  # Checking for private key ...
+  # check for private key
   register_new_key="no"
   if [[ -n "${PARAM_ACCOUNT_KEY:-}" ]]; then
     # a private key was specified from the command line so use it for this run
@@ -420,7 +422,7 @@ init_system() {
   fi
 }
 
-# Different sed version for different os types...
+# Different sed versions for different OS types.
 _sed() {
   if [[ "${OSTYPE}" = "Linux" || "${OSTYPE:0:5}" = "MINGW" ]]; then
     sed -r "${@}"
@@ -487,8 +489,8 @@ rm_json_arrays() {
   sed -e "${filter}" -e "${filter}" -e "${filter}"
 }
 
-# OpenSSL writes to stderr/stdout even when there are no errors. So just
-# display the output if the exit code was != 0 to simplify debugging.
+# OpenSSL writes to stderr/stdout even when there are no errors.  Only display
+# the output if the exit code was != 0 to simplify debugging.
 _openssl() {
   set +e
   out="$("${OPENSSL}" "${@}" 2>&1)"
@@ -1037,7 +1039,7 @@ sign_domain() {
 }
 
 # Usage: --version (-v)
-# Description: Print version information.
+# Description: Print version information
 command_version() {
   load_config noverify
 
@@ -1072,7 +1074,7 @@ command_version() {
 }
 
 # Usage: --register
-# Description: Register account key.
+# Description: Register account key
 command_register() {
   init_system
   echo "+ Done!"
@@ -1080,7 +1082,7 @@ command_register() {
 }
 
 # Usage: --account
-# Description: Update account contact information.
+# Description: Update account contact information
 command_account() {
   init_system
   FAILED=false
@@ -1128,7 +1130,7 @@ command_account() {
 }
 
 # Usage: --cron (-c)
-# Description: Sign/renew non-existent/changed/expiring certificates.
+# Description: Sign/renew non-existent/changed/expiring certificates
 command_sign_domains() {
   init_system
   hookscript_bricker_hook
@@ -1156,7 +1158,7 @@ command_sign_domains() {
     _exiterr "domains.txt not found and --domain not given"
   fi
 
-  # Generate certificates for all domains found in domains.txt.  Check if
+  # Generate certificates for all domains found in domains.txt.  Check if any
   # existing certificate are about to expire.
   ORIGIFS="${IFS}"
   IFS=$'\n'
@@ -1197,10 +1199,13 @@ command_sign_domains() {
       mkdir -p "${certdir}" || _exiterr "Unable to create directory ${certdir}"
     fi
 
-    # read cert config
-    # for now this loads the certificate specific config in a subshell and parses a diff of set variables.
-    # we could just source the config file but i decided to go this way to protect people from accidentally overriding
-    # variables used internally by this script itself.
+    # Read cert-specific config.  For now, this loads the certificate specific
+    # config in a subshell and parses a diff of the set variables.  We could
+    # just source the config file but [Lukas] decided to go this way to protect
+    # people from accidentally overriding variables used internally by this
+    # script itself.  (Ben thinks that you get what you deserve if that happens,
+    # and you didn't expect it to, because otherwise it needs source mungery to
+    # make happen what you want to have happen, but it's not worth taking out.)
     if [[ -n "${DOMAINS_D}" ]]; then
       certconfig="${DOMAINS_D}/${alias}"
     else
@@ -1349,7 +1354,7 @@ command_sign_domains() {
 }
 
 # Usage: --signcsr (-s) path/to/csr.pem
-# Description: Sign a given CSR, output CRT on stdout (advanced usage).
+# Description: Sign a given CSR, output CRT on stdout (advanced usage)
 command_sign_csr() {
   # redirect stdout to stderr
   # leave stdout over at fd 3 to output the cert
@@ -1402,7 +1407,7 @@ command_sign_csr() {
 }
 
 # Usage: --revoke (-r) path/to/cert.pem
-# Description: Revoke specified certificate.
+# Description: Revoke specified certificate
 command_revoke() {
   init_system
 
@@ -1437,7 +1442,7 @@ command_revoke() {
 }
 
 # Usage: --cleanup (-gc)
-# Description: Move unused certificate files to archive directory.
+# Description: Move unused certificate files to archive directory
 command_cleanup() {
   if [ ! "${1:-}" = "noinit" ]; then
     load_config
@@ -1493,7 +1498,7 @@ command_cleanup() {
 }
 
 # Usage: --help (-h)
-# Description: Show help text.
+# Description: Show help text
 command_help() {
 
     cat << EOH
@@ -1548,7 +1553,7 @@ EOH
 }
 
 # Usage: --env (-e)
-# Description: Output configuration variables for use in other scripts.
+# Description: Output configuration variables for use in other scripts
 command_env() {
   echo "# dehydrated configuration"
   load_config
