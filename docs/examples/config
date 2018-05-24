@@ -107,6 +107,9 @@
 # Fetch OCSP responses.
 #OCSP_FETCH="no"
 
+# OCSP refresh interval.
+#OCSP_DAYS=5
+
 # Issuer chain cache directory.
 #CHAINCACHE="${BASEDIR}/chains"
 
