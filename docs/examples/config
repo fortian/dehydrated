@@ -1,119 +1,117 @@
-########################################################
-# This is the main config file for dehydrated          #
-#                                                      #
-# This file is looked for in the following locations:  #
-# $SCRIPTDIR/config (next to this script)              #
-# /usr/local/etc/dehydrated/config                     #
-# /etc/dehydrated/config                               #
-# ${PWD}/config (in current working-directory)         #
-#                                                      #
-# Default values of this config are in comments        #
-########################################################
+# This is the main config file for dehydrated.
 
-# Which user should dehydrated run as? This will be implictly enforced when running as root
+# This file is looked for in the following locations:
+# - $SCRIPTDIR/config (i.e., next to the dehydrated script)
+# - /usr/local/etc/dehydrated/config
+# - /etc/dehydrated/config
+# - ${PWD}/config (in current working-directory)
+
+# Default values of this config are in comments.
+
+# The user dehydrated should run as.  This will be implictly enforced when
+# running as root.
 #DEHYDRATED_USER=
 
-# Which group should dehydrated run as? This will be implictly enforced when running as root
+# The group dehydrated should run as.  This will be implictly enforced when
+# running as root.
 #DEHYDRATED_GROUP=
 
-# Resolve names to addresses of IP version only. (curl)
-# supported values: 4, 6
-# default: <unset>
+# Resolve names to addresses of IP version X only (curl).
+# Supported values: 4, 6
 #IP_VERSION=
 
-# Path to certificate authority (default: https://acme-v02.api.letsencrypt.org/directory)
+# Path to certificate authority.
 #CA="https://acme-v02.api.letsencrypt.org/directory"
 
-# Path to old certificate authority
-# Set this value to your old CA value when upgrading from ACMEv1 to ACMEv2 under a different endpoint.
-# If dehydrated detects an account-key for the old CA it will automatically reuse that key
+# Path to old certificate authority.  Set this value to your old CA value when
+# upgrading from ACMEv1 to ACMEv2 under a different endpoint.  If dehydrated
+# detects an account-key for the old CA, it will automatically reuse that key
 # instead of registering a new one.
-# default: https://acme-v01.api.letsencrypt.org/directory
 #OLDCA="https://acme-v01.api.letsencrypt.org/directory"
 
-# Which challenge should be used? Currently http-01 and dns-01 are supported
+# The challenge to be use.  Currently "http-01" and "dns-01" are supported.
 #CHALLENGETYPE="http-01"
 
-# Path to a directory containing additional config files, allowing to override
-# the defaults found in the main configuration file. Additional config files
-# in this directory needs to be named with a '.sh' ending.
-# default: <unset>
+# Path to a directory containing additional config files, to override the
+# defaults found in the main configuration file.  Additional config files in
+# this directory needs to be named with a '.sh' ending.
 #CONFIG_D=
 
-# Base directory for account key, generated certificates and list of domains (default: $SCRIPTDIR -- uses config directory if undefined)
+# Base directory for account key, generated certificates, and list of domains
+# (uses config directory if unset).
 #BASEDIR=$SCRIPTDIR
 
-# File containing the list of domains to request certificates for (default: $BASEDIR/domains.txt)
+# File containing the list of domains for which to request certificates.
 #DOMAINS_TXT="${BASEDIR}/domains.txt"
 
-# Output directory for generated certificates
+# Output directory for generated certificates.
 #CERTDIR="${BASEDIR}/certs"
 
-# Directory for account keys and registration information
+# Directory for account keys and registration information.
 #ACCOUNTDIR="${BASEDIR}/accounts"
 
-# Output directory for challenge-tokens to be served by webserver or deployed in HOOK (default: /var/www/dehydrated)
+# Output directory for challenge-tokens to be served by webserver or deployed in
+# HOOK.
 #WELLKNOWN="/var/www/dehydrated"
 
-# Default keysize for private keys (default: 4096)
+# Default keysize for private keys.
 #KEYSIZE="4096"
 
-# Path to openssl config file (default: <unset> - tries to figure out system default)
+# Path to openssl config file (tries to figure out system default if unset).
 #OPENSSL_CNF=
 
-# Path to OpenSSL binary (default: "openssl")
+# Path to OpenSSL binary.
 #OPENSSL="openssl"
 
-# Extra options passed to the curl binary (default: <unset>)
+# Extra options passed to the curl binary.
 #CURL_OPTS=
 
-# Program or function called in certain situations
-#
-# After generating the challenge-response, or after failed challenge (in this case altname is empty)
-# Given arguments: clean_challenge|deploy_challenge altname token-filename token-content
-#
-# After successfully signing certificate
-# Given arguments: deploy_cert domain path/to/privkey.pem path/to/cert.pem path/to/fullchain.pem
-#
-# BASEDIR and WELLKNOWN variables are exported and can be used in an external program
-# default: <unset>
+# Program or function called in certain situations:
+# - After generating the challenge-response, with arguments:
+#   clean_challenge|deploy_challenge altname token-filename token-content
+# - After a failed challenge, with arguments:
+#   clean_challenge|deploy_challenge '' token-filename token-content
+# - After successfully signing a certificate, with arguments:
+#   deploy_cert domain path/to/privkey.pem path/to/cert.pem
+#   path/to/fullchain.pem
+# BASEDIR and WELLKNOWN variables are exported and can be used in an external
+# program.
 #HOOK=
 
-# Chain clean_challenge|deploy_challenge arguments together into one hook call per certificate (default: no)
+# Chain clean_challenge|deploy_challenge arguments together into one hook call
+# per certificate.
 #HOOK_CHAIN="no"
 
-# Minimum days before expiration to automatically renew certificate (default: 30)
+# Minimum days before expiration to automatically renew certificate.
 #RENEW_DAYS="30"
 
-# Regenerate private keys instead of just signing new certificates on renewal (default: yes)
+# Regenerate private keys instead of just signing new certificates on renewal.
 #PRIVATE_KEY_RENEW="yes"
 
-# Create an extra private key for rollover (default: no)
+# Create an extra private key for rollover.
 #PRIVATE_KEY_ROLLOVER="no"
 
-# Which public key algorithm should be used? Supported: rsa, prime256v1 and secp384r1
+# The public key algorithm to use.  Supported values are "rsa", "prime256v1",
+# and "secp384r1".
 #KEY_ALGO=rsa
 
-# E-mail to use during the registration (default: <unset>)
+# E-mail to use during the registration.
 #CONTACT_EMAIL=
 
-# Lockfile location, to prevent concurrent access (default: $BASEDIR/lock)
+# Lockfile location, to prevent concurrent access.
 #LOCKFILE="${BASEDIR}/lock"
 
-# Option to add CSR-flag indicating OCSP stapling to be mandatory (default: no)
+# Option to add CSR-flag, indicating OCSP stapling to be mandatory.
 #OCSP_MUST_STAPLE="no"
 
-# Fetch OCSP responses (default: no)
+# Fetch OCSP responses.
 #OCSP_FETCH="no"
 
-# OCSP refresh interval (default: 5 days)
-#OCSP_DAYS=5
-
-# Issuer chain cache directory (default: $BASEDIR/chains)
+# Issuer chain cache directory.
 #CHAINCACHE="${BASEDIR}/chains"
 
-# Automatic cleanup (default: no)
+# Automatic cleanup.
 #AUTO_CLEANUP="no"
 
-# ACME API version (default: auto)
+# ACME API version.
 #API=auto
