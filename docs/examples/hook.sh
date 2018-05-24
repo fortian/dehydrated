@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 # deploy_challenge is called once for every domain that needs to be validated,
 # including any alternative names you may have listed.
 
@@ -64,6 +65,7 @@ deploy_cert() {
     # systemctl reload nginx
 }
 
+
 # deploy_ocsp is called once for each updated OCSP stapling file that has been
 # produced.  You might use this to copy your new OCSP stapling files to
 # service-specific locations and reload the service.
@@ -83,6 +85,7 @@ deploy_ocsp() {
     # cp "${OCSPFILE}" /etc/nginx/ssl/; chown -R nginx: /etc/nginx/ssl
     # systemctl reload nginx
 }
+
 
 # unchanged_cert is called once for each certificate that is still valid and
 # therefore wasn't reissued.
@@ -104,6 +107,7 @@ unchanged_cert() {
 
 }
 
+
 # invalid_challenge is called if the challenge response has failed, so domain
 # owners can be aware and act accordingly.
 
@@ -119,6 +123,7 @@ invalid_challenge() {
     # Simple example: Send mail to root
     # printf "Subject: Validation of ${DOMAIN} failed!\n\nOh noez!" | sendmail root
 }
+
 
 # request_failure is called when an HTTP request fails (e.g., when the ACME
 # server is busy, returns an error, etc.).  It will be called upon any response
@@ -141,6 +146,7 @@ request_failure() {
     # Simple example: Send mail to root
     # printf "Subject: HTTP request failed failed!\n\nA http request failed with status ${STATUSCODE}!" | sendmail root
 }
+
 
 # generate_csr is called before any certificate signing operation takes place.
 # It can be used to generate or fetch a certificate signing request with
@@ -168,18 +174,20 @@ generate_csr() {
     # fi
 }
 
+
 # startup_hook is called before the cron command to do some initial tasks (e.g.,
 # starting a webserver).
 
 startup_hook() {
-  :
+    :
 }
 
-# This hook is called at the end of the cron command and can be used to do some
+
+# exit_hook is called at the end of the cron command and can be used to do some
 # final tasks, like cleanup.
 
 exit_hook() {
-  :
+    :
 }
 
 HANDLER="$1"; shift
