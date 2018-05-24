@@ -180,6 +180,9 @@ load_config() {
         echo "# INFO: Using additional config file ${check_config_d}"
         # shellcheck disable=SC1090
         . "${check_config_d}"
+      elif [[ "${check_config_d}" = "${CONFIG_D}/*.sh" ]]; then
+        # The glob failed because the directory is empty.
+        :
       else
         _exiterr "Specified additional config ${check_config_d} is not readable or not a file at all."
       fi
