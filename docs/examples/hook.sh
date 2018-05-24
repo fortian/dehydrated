@@ -185,6 +185,11 @@ exit_hook() {
 HANDLER="$1"; shift
 if [[ "${HANDLER}" =~ ^(deploy_challenge|clean_challenge|deploy_cert|deploy_ocsp|unchanged_cert|invalid_challenge|request_failure|generate_csr|startup_hook|exit_hook)$ ]]; then
     "$HANDLER" "$@"
+elif [ "$HANDLER" = "this_hookscript_is_broken__dehydrated_is_working_fine__please_ignore_unknown_hooks_in_your_script" ]; then
+    # Dehydrated is too clever for its own good, and calls the hook script with
+    # a bogus argument to see if it blows up when that happens.  Apparently
+    # you're supposed to ignore that sort of thing.
+    :
 else
-    echo "Unknown command \"${HANDLER}\"; also called with: $@"
+    echo "Warning: called with unknown command \"$HANDLER\"!"
 fi
