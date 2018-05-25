@@ -64,33 +64,25 @@ other
                                       scripts
 
 Parameters:
-  --accept-terms                      Accept CA's terms of service
-automatically
-  -fc/--full-chain                    Print full chain when using
--s/--signcsr
+  --accept-terms                      Accept CA's terms of service automatically
+  -fc/--full-chain                    Print full chain when using -s/--signcsr
   -4/--ipv4                           Resolve names to IPv4 addresses only
   -6/--ipv6                           Resolve names to IPv6 addresses only
-  -d/--domain domain.tld              Use specified domain name(s) instead
-of
+  -d/--domain domain.tld              Use specified domain name(s) instead of
                                       domains.txt entry (one cert!)
   --alias certalias                   Use specified name for cert dir (and
-                                      per-cert config) instead of the
-primary
+                                      per-cert config) instead of the primary
                                       domain (only used if -d/--domain is
                                       specified)
   -g/--keep-going                     Keep going after errors while
-                                      creating/renewing multiple certs in
-cron
+                                      creating/renewing multiple certs in cron
                                       mode
-  -x/--force                          Force renewal of cert even if it is
-valid
+  -x/--force                          Force renewal of cert even if it is valid
                                       for more than RENEW_DAYS days
   -n/--no-lock                        Don't use a lockfile (dangerous!)
-  --lock-suffix example-com           Suffix lockfile name with a string
-(useful
+  --lock-suffix example-com           Suffix lockfile name with a string (useful
                                       for running with -d/--domain)
-  --ocsp                              Set option in CSR indicating OCSP
-stapling
+  --ocsp                              Set option in CSR indicating OCSP stapling
                                       is mandatory
   -p/--privkey path/to/key.pem        Use specified private key instead of
                                       account key (useful for revocation)
