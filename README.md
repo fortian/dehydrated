@@ -80,22 +80,32 @@ Parameters:
 
 ## Donate
 
-I'm a student hacker with a few (unfortunately) quite expensive hobbies (self-hosting, virtualization clusters, routing,
-high-speed networking, embedded hardware, etc.).
-I'm really having fun playing around with hard- and software and I'm steadily learning new things.
-Without those hobbies I probably would never have started working on dehydrated to begin with :)
+(From the original README)
 
-I'd really appreciate if you could [donate a bit of money](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=23P9DSJBTY7C8)
-so I can buy cool stuff (while still being able to afford food :D).  
+> I'm a student hacker with a few (unfortunately) quite expensive hobbies
+> (self-hosting, virtualization clusters, routing, high-speed networking,
+> embedded hardware, etc.).  I'm really having fun playing around with hard-
+> and software and I'm steadily learning new things.  Without those hobbies
+> I probably would never have started working on dehydrated to begin with :)
 
-If you have hardware laying around that you think I'd enjoy playing with (e.g. decommissioned but still modern-ish servers,
-10G networking hardware, enterprise grade routers or APs, interesting ARM/MIPS boards, etc.) and that you would be willing
-to ship to me please contact me at `donations@dehydrated.io` or on Twitter [@lukas2511](https://twitter.com/lukas2511).
+> I'd really appreciate if you could [donate a bit of > money](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=23P9DSJBTY7C8)
+> so I can buy cool stuff (while still being able to afford food :D).  
 
-If you want your name to be added to the [donations list](https://dehydrated.io/donations.html) please add a note or send me an
-email `donations@dehydrated.io`. I respect your privacy and won't publish your name without permission.
+> If you have hardware laying around that you think I'd enjoy playing with
+> (e.g. decommissioned but still modern-ish servers, 10G networking
+> hardware, enterprise grade routers or APs, interesting ARM/MIPS boards,
+> etc.) and that you would be willing to ship to me please contact me at
+> `donations@dehydrated.io` or on Twitter
+> [@lukas2511](https://twitter.com/lukas2511).
 
-Other ways of donating:
- - [My Amazon Wishlist](http://www.amazon.de/registry/wishlist/1TUCFJK35IO4Q)
- - Monero: 4Kkf4tF4r9DakxLj37HDXLJgmpVfQoFhT7JLDvXwtUZZMTbsK9spsAPXivWPAFcDUj6jHhY8hJSHX8Cb8ndMhKeQHPSkBZZiK89Fx8NTHk
- - Bitcoin: 12487bHxcrREffTGwUDnoxF1uYxCA7ztKK
+> If you want your name to be added to the [donations
+> list](https://dehydrated.io/donations.html) please add a note or send me
+> an email `donations@dehydrated.io`. I respect your privacy and won't
+> publish your name without permission.
+
+> Other ways of donating:
+>  - [My Amazon Wishlist](http://www.amazon.de/registry/wishlist/1TUCFJK35IO4Q)
+>  - Monero: 4Kkf4tF4r9DakxLj37HDXLJgmpVfQoFhT7JLDvXwtUZZMTbsK9spsAPXivWPAFcDUj6jHhY8hJSHX8Cb8ndMhKeQHPSkBZZiK89Fx8NTHk
+>  - Bitcoin: 12487bHxcrREffTGwUDnoxF1uYxCA7ztKK
+
+Of course, if you want to give me money too, you're welcome to!  :-P
