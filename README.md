@@ -51,16 +51,14 @@ Commands:
   -v/--version                        Print version information
   --register                          Register account key
   --account                           Update account contact information
-  -c/--cron                           Sign/renew
-non-existent/changed/expiring
+  -c/--cron                           Sign/renew non-existent/changed/expiring
                                       certs
   -s/--signcsr path/to/csr.pem        Sign a given CSR, output CRT on stdout
                                       (advanced usage)
   -r/--revoke path/to/cert.pem        Revoke specified certificate
   -gc/--cleanup                       Move unused cert files to archive dir
   -h/--help                           Show this help text
-  -e/--env                            Output config variables for use in
-other
+  -e/--env                            Output config variables for use in other
                                       scripts
 
 Parameters:
