@@ -43,39 +43,64 @@ and edit it to fit your needs.
 ## Usage:
 
 ```text
-Usage: ./dehydrated [-h] [command [argument]] [parameter [argument]] [parameter [argument]] ...
+Usage: dehydrated [-h] [command [arg]] [parameter [arg]] [parameter [arg]] ...
 
 Default command: help
 
 Commands:
- --version (-v)                   Print version information
- --register                       Register account key
- --account                        Update account contact information
- --cron (-c)                      Sign/renew non-existent/changed/expiring certificates.
- --signcsr (-s) path/to/csr.pem   Sign a given CSR, output CRT on stdout (advanced usage)
- --revoke (-r) path/to/cert.pem   Revoke specified certificate
- --cleanup (-gc)                  Move unused certificate files to archive directory
- --help (-h)                      Show help text
- --env (-e)                       Output configuration variables for use in other scripts
+  -v/--version                        Print version information
+  --register                          Register account key
+  --account                           Update account contact information
+  -c/--cron                           Sign/renew
+non-existent/changed/expiring
+                                      certs
+  -s/--signcsr path/to/csr.pem        Sign a given CSR, output CRT on stdout
+                                      (advanced usage)
+  -r/--revoke path/to/cert.pem        Revoke specified certificate
+  -gc/--cleanup                       Move unused cert files to archive dir
+  -h/--help                           Show this help text
+  -e/--env                            Output config variables for use in
+other
+                                      scripts
 
 Parameters:
- --accept-terms                   Accept CAs terms of service
- --full-chain (-fc)               Print full chain when using --signcsr
- --ipv4 (-4)                      Resolve names to IPv4 addresses only
- --ipv6 (-6)                      Resolve names to IPv6 addresses only
- --domain (-d) domain.tld         Use specified domain name(s) instead of domains.txt entry (one certificate!)
- --alias certalias                Use specified name for certificate directory (and per-certificate config) instead of the primary domain (only used if --domain is specified)
- --keep-going (-g)                Keep going after encountering an error while creating/renewing multiple certificates in cron mode
- --force (-x)                     Force renew of certificate even if it is longer valid than value in RENEW_DAYS
- --no-lock (-n)                   Don't use lockfile (potentially dangerous!)
- --lock-suffix example.com        Suffix lockfile name with a string (useful for with -d)
- --ocsp                           Sets option in CSR indicating OCSP stapling to be mandatory
- --privkey (-p) path/to/key.pem   Use specified private key instead of account key (useful for revocation)
- --config (-f) path/to/config     Use specified config file
- --hook (-k) path/to/hook.sh      Use specified script for hooks
- --out (-o) certs/directory       Output certificates into the specified directory
- --challenge (-t) http-01|dns-01  Which challenge should be used? Currently http-01 and dns-01 are supported
- --algo (-a) rsa|prime256v1|secp384r1 Which public key algorithm should be used? Supported: rsa, prime256v1 and secp384r1
+  --accept-terms                      Accept CA's terms of service
+automatically
+  -fc/--full-chain                    Print full chain when using
+-s/--signcsr
+  -4/--ipv4                           Resolve names to IPv4 addresses only
+  -6/--ipv6                           Resolve names to IPv6 addresses only
+  -d/--domain domain.tld              Use specified domain name(s) instead
+of
+                                      domains.txt entry (one cert!)
+  --alias certalias                   Use specified name for cert dir (and
+                                      per-cert config) instead of the
+primary
+                                      domain (only used if -d/--domain is
+                                      specified)
+  -g/--keep-going                     Keep going after errors while
+                                      creating/renewing multiple certs in
+cron
+                                      mode
+  -x/--force                          Force renewal of cert even if it is
+valid
+                                      for more than RENEW_DAYS days
+  -n/--no-lock                        Don't use a lockfile (dangerous!)
+  --lock-suffix example-com           Suffix lockfile name with a string
+(useful
+                                      for running with -d/--domain)
+  --ocsp                              Set option in CSR indicating OCSP
+stapling
+                                      is mandatory
+  -p/--privkey path/to/key.pem        Use specified private key instead of
+                                      account key (useful for revocation)
+  -f/--config path/to/config          Use specified config file
+  -k/--hook path/to/hook.sh           Use specified script for hooks
+  -o/--out certs/dir                  Output certs into the specified dir
+  -t/--challenge http-01|dns-01       The challenge to use
+  -a/--algo rsa|prime256v1|secp384r1  The public key algorithm to use
+  -V/--verbose                        Enable light debug tracing
+  -D/--debug                          Enable heavy debug tracing
 ```
 
 ## Donate
