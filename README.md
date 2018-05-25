@@ -108,4 +108,5 @@ Parameters:
 >  - Monero: 4Kkf4tF4r9DakxLj37HDXLJgmpVfQoFhT7JLDvXwtUZZMTbsK9spsAPXivWPAFcDUj6jHhY8hJSHX8Cb8ndMhKeQHPSkBZZiK89Fx8NTHk
 >  - Bitcoin: 12487bHxcrREffTGwUDnoxF1uYxCA7ztKK
 
-Of course, if you want to give me money too, you're welcome to!  :-P
+Of course, if you want to give me (@therealbstern) money too, you're welcome
+to!  :-P
